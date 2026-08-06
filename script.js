@@ -39,17 +39,6 @@
     });
   }
 
-  /* ---------- Hero: vídeo só aparece quando há frame ---------- */
-  const video = $('#heroVideo');
-  if (video) {
-    const show = () => { if (video.readyState >= 2) video.classList.add('is-ready'); };
-    video.addEventListener('loadeddata', show);
-    video.addEventListener('canplay', show);
-    const p = video.play();
-    if (p && p.catch) p.catch(() => {});
-    show();
-  }
-
   /* ---------- Hero: vídeo lateral (showcase) — só carrega/toca em telas ≥1024px ---------- */
   const sideVideo = $('#heroSideVideo');
   if (sideVideo) {
