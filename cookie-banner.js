@@ -138,6 +138,27 @@
     }
 
     /* ============================================================
+       TOGGLE VISUAL DO LINK "COOKIES" NO RODAPÉ (padrão AG5)
+       ============================================================ */
+    function updateFooterToggleIcon() {
+        var toggle = document.getElementById('cookie-toggle');
+        if (!toggle) return;
+
+        var prefs = load();
+        if (prefs && prefs.decided) {
+            if (prefs.functional || prefs.analytics || prefs.performance || prefs.advertising) {
+                toggle.classList.remove('inactive');
+                toggle.classList.add('active');
+            } else {
+                toggle.classList.remove('active');
+                toggle.classList.add('inactive');
+            }
+        } else {
+            toggle.classList.add('active');
+        }
+    }
+
+    /* ============================================================
        AÇÕES
        ============================================================ */
     function acceptAll() {
@@ -146,6 +167,7 @@
         dispatch(state);
         hideBanner();
         closeModal();
+        updateFooterToggleIcon();
         toast('Todos os cookies aceitos.');
     }
 
@@ -155,6 +177,7 @@
         dispatch(state);
         hideBanner();
         closeModal();
+        updateFooterToggleIcon();
         toast('Apenas cookies necessários salvos.');
     }
 
@@ -165,6 +188,7 @@
         dispatch(state);
         hideBanner();
         closeModal();
+        updateFooterToggleIcon();
         toast('Suas preferências foram salvas.');
     }
 
@@ -248,6 +272,7 @@
        ============================================================ */
     function init() {
         var saved = load();
+        updateFooterToggleIcon();
 
         if (saved && saved.decided && !isExpired(saved.timestamp)) {
             // Usuário já decidiu — aplica preferências e mostra botão flutuante
