@@ -125,7 +125,7 @@ p{margin:0}
 .hero__scrim--bottom{background:linear-gradient(0deg,var(--graphite) 2%,transparent 45%)}
 .hero__inner{position:relative;width:100%;max-width:var(--wrap);margin:0 auto;padding:118px var(--pad) 74px}
 .hero__grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:56px;align-items:center}
-.hero h1{font-weight:700;font-size:clamp(40px,5.8vw,80px);line-height:1.04;letter-spacing:-.025em;margin:0 0 24px;max-width:19ch}
+.hero h1{font-weight:700;font-size:clamp(32px,4.4vw,58px);line-height:1.08;letter-spacing:-.02em;margin:0 0 24px;max-width:18ch}
 .hero .mark{color:var(--accent)}
 .hero__lead{max-width:52ch;color:var(--txt-dark);font-size:17px;line-height:1.65;margin:0 0 34px}
 .hero__ctas{display:flex;flex-wrap:wrap;gap:14px}
@@ -387,7 +387,7 @@ p{margin:0}
   .hero__scrim{background:linear-gradient(180deg,rgba(20,24,28,.98) 0%,rgba(20,24,28,.94) 42%,rgba(20,24,28,.55) 72%,rgba(20,24,28,.28) 100%)}
   .hero__scrim--bottom{background:linear-gradient(0deg,var(--graphite) 0%,transparent 30%)}
   .hero__inner{padding:110px var(--pad) 46px;min-height:100dvh;display:flex;flex-direction:column;justify-content:flex-end}
-  .hero h1{font-size:clamp(34px,9.5vw,44px);max-width:none}
+  .hero h1{font-size:clamp(30px,8.5vw,40px);max-width:none}
   .hero__lead{font-size:15.5px;max-width:none}
   .hero__showcase{display:none}
   .btn{width:100%;text-align:center}
