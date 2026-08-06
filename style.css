@@ -175,11 +175,11 @@ p{margin:0}
 
 /* ---------- PROBLEMA ---------- */
 .problema{background:var(--off);color:var(--graphite);padding:var(--sec) 0}
-.problema__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:64px;align-items:center}
+.problema__head{max-width:64ch;margin-bottom:56px}
 .problema h2{font-weight:700;font-size:clamp(30px,3.6vw,50px);line-height:1.08;margin:0 0 20px}
 .problema .lead{margin-bottom:28px;max-width:44ch}
 
-.riskgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.riskgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
 .risk{
   background:var(--off);border-radius:10px;overflow:hidden;
   border:1px solid var(--line-light);
@@ -404,7 +404,8 @@ p{margin:0}
   .hero__inner{padding-top:130px}
   .hero__grid{grid-template-columns:1fr}
   .hero__showcase{max-width:325px;margin:0 auto}
-  .problema__grid,.depo__grid,.faq__grid,.local__grid,.contato__grid{grid-template-columns:1fr;gap:40px}
+  .depo__grid,.faq__grid,.local__grid,.contato__grid{grid-template-columns:1fr;gap:40px}
+  .riskgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .carousel{min-height:340px}
   .card,.card--wide{grid-column:span 3}
   .bento__extras{grid-template-columns:repeat(2,minmax(0,1fr))}
