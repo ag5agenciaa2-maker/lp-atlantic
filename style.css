@@ -287,6 +287,10 @@ p{margin:0}
 .rodape__list span{color:var(--accent)}
 .creditos{border-top:1px solid rgba(247,247,247,.1);padding-top:24px;padding-bottom:24px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:13px;color:var(--tech)}
 .creditos a{font-weight:600}
+.footer-legal-links{display:inline;margin-top:6px;font-size:11px;opacity:.7}
+.footer-legal-links a{text-decoration:none;color:inherit;font-weight:400;transition:opacity .2s ease}
+.footer-legal-links a:hover{opacity:1}
+.footer-legal-links span{margin:0 8px;opacity:.7}
 
 /* ---------- ANIMAÇÕES ---------- */
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
