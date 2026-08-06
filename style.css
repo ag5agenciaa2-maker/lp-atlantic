@@ -215,12 +215,12 @@ p{margin:0}
 
 /* Card de solução — destacado, largura total, abaixo dos 3 problemas */
 .risk--solution{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}
-.risk--solution .risk__media{height:100%;min-height:220px}
+.risk--solution .risk__media{aspect-ratio:16/10}
 .risk--solution .risk__media::after{background:linear-gradient(0deg,rgba(20,24,28,.55) 0%,rgba(20,24,28,0) 55%)}
 .risk--solution .risk__idx{top:14px;left:auto;right:14px;width:34px;height:34px;font-size:13px}
-.risk--solution .risk__body{padding:36px 40px;display:flex;flex-direction:column;justify-content:center}
-.risk--solution .risk__tag{font-size:13px}
-.risk--solution p:last-child{font-size:16px;line-height:1.7;max-width:46ch}
+.risk--solution .risk__body{padding:28px 36px;display:flex;flex-direction:column;justify-content:center;gap:14px}
+.risk--solution .risk__tag{font-size:13px;margin:0}
+.risk--solution p:last-child{font-size:15.5px;line-height:1.65;max-width:42ch}
 
 .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:80px;border-top:1px solid var(--line-light);padding-top:40px}
 .stat__n{font-family:var(--font-display);font-size:clamp(38px,4.4vw,60px);font-weight:700;line-height:1;letter-spacing:-.03em}
