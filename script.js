@@ -7,19 +7,35 @@
   const $ = (s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
 
-  /* ---------- Menu mobile ---------- */
+  /* ---------- Menu mobile (Drawer Premium) ---------- */
   const toggle = $('#navToggle');
-  const menu = $('#navMenu');
-  if (toggle && menu) {
-    toggle.addEventListener('click', () => {
-      const open = menu.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', String(open));
+  const drawer = $('#drawer');
+  const drawerOverlay = $('#drawerOverlay');
+  const drawerClose = $('#drawerClose');
+  const drawerMenu = $('#drawerMenu');
+  if (toggle && drawer && drawerOverlay) {
+    const openDrawer = () => {
+      drawer.classList.add('is-open');
+      drawerOverlay.classList.add('is-open');
+      drawer.setAttribute('aria-hidden', 'false');
+      toggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    };
+    const closeDrawer = () => {
+      drawer.classList.remove('is-open');
+      drawerOverlay.classList.remove('is-open');
+      drawer.setAttribute('aria-hidden', 'true');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    };
+    toggle.addEventListener('click', openDrawer);
+    drawerClose?.addEventListener('click', closeDrawer);
+    drawerOverlay.addEventListener('click', closeDrawer);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && drawer.classList.contains('is-open')) closeDrawer();
     });
-    menu.addEventListener('click', (e) => {
-      if (e.target.tagName === 'A') {
-        menu.classList.remove('is-open');
-        toggle.setAttribute('aria-expanded', 'false');
-      }
+    drawerMenu?.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') closeDrawer();
     });
   }
 

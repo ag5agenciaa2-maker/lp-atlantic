@@ -22,9 +22,6 @@
         <em>Soluções Ambientais</em>
       </span>
     </a>
-    <button class="nav__toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Abrir menu">
-      <span></span><span></span><span></span>
-    </button>
     <nav class="nav__menu" id="navMenu">
       <a href="#servicos">Serviços</a>
       <a href="#sobre">Sobre</a>
@@ -33,6 +30,9 @@
       <a href="#localizacao">Onde estamos</a>
       <a class="btn btn--accent btn--sm" href="#contato">Vistoria grátis</a>
     </nav>
+    <button class="nav__toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="drawer" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
@@ -382,6 +382,28 @@
     <p>Desenvolvido por <a href="https://www.ag5agencia.com.br" target="_blank" rel="noopener">AG5</a> Agência</p>
   </div>
 </footer>
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer__head">
+    <a class="drawer__brand" href="#topo">
+      <img src="assets/logo-atlantic-solution-mobile.webp" alt="Atlântic Soluções Ambientais" width="40" height="40" />
+      <span>
+        <strong>ATLÂNTIC</strong>
+        <em>Soluções Ambientais</em>
+      </span>
+    </a>
+    <button class="drawer__close" type="button" id="drawerClose" aria-label="Fechar menu">✕</button>
+  </div>
+  <nav class="drawer__menu" id="drawerMenu">
+    <a href="#servicos">Serviços</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#depoimentos">Depoimentos</a>
+    <a href="#faq">FAQ</a>
+    <a href="#localizacao">Onde estamos</a>
+    <a class="btn btn--accent" href="#contato">Vistoria grátis</a>
+  </nav>
+</aside>
 
 <script type="application/ld+json">
 {
