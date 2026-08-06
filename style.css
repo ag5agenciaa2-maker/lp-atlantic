@@ -403,3 +403,202 @@ p{margin:0}
   .reveal{opacity:1;transform:none}
   html{scroll-behavior:auto}
 }
+
+/* ═══════════════════════════════════════════════════════
+   WHATSAPP PREMIUM — Balão + botão flutuante (AG5 V4)
+═══════════════════════════════════════════════════════ */
+.wa-premium-container {
+  position: fixed;
+  bottom: 25px;
+  right: 20px;
+  z-index: 2000;
+  font-family: var(--font-body);
+}
+
+/* Balão Glassmorphism */
+.wa-bubble {
+  width: 280px;
+  position: absolute;
+  bottom: 68px;
+  right: 0;
+  background: rgba(255, 252, 246, .98);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(126, 217, 86, .25);
+  border-radius: 1rem;
+  box-shadow: 0 12px 32px -12px rgba(28, 24, 12, .18);
+  padding: 1rem 1.15rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px) scale(0.95);
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Cauda triangular conectando o balão ao botão */
+.wa-bubble::before {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  right: 16px;
+  width: 20px;
+  height: 20px;
+  background: inherit;
+  border-right: 1px solid rgba(126, 217, 86, .35);
+  border-bottom: 1px solid rgba(126, 217, 86, .35);
+  transform: rotate(45deg);
+  border-bottom-right-radius: 4px;
+  z-index: -1;
+}
+
+.wa-bubble.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+/* Cabeçalho */
+.wa-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.wa-avatar-wrapper { position: relative; flex-shrink: 0; }
+
+.wa-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top;
+  border: 2px solid #25d366;
+  display: block;
+}
+
+.wa-name {
+  display: block;
+  font-weight: 700;
+  color: #1a1a1a;
+  font-size: 14px;
+  letter-spacing: .01em;
+}
+
+/* Digitação */
+.wa-typing {
+  display: flex;
+  gap: 4px;
+  padding: 6px 0;
+}
+
+.wa-typing span {
+  width: 5px;
+  height: 5px;
+  background: #25d366;
+  border-radius: 50%;
+  animation: wa-typing-ani 1.4s infinite;
+  opacity: 0.4;
+}
+
+.wa-typing span:nth-child(2) { animation-delay: 0.2s; }
+.wa-typing span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes wa-typing-ani {
+  0%, 100% { transform: translateY(0); opacity: 0.4; }
+  50%      { transform: translateY(-4px); opacity: 1; }
+}
+
+/* Mensagem */
+.wa-message-text p {
+  margin: 0;
+  font-size: 13px;
+  color: #333;
+  line-height: 1.5;
+}
+
+.wa-message-text p strong {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* Botão flutuante redondo (estado inicial hidden, JS controla via .visible) */
+.wa-float-btn {
+  width: 54px;
+  height: 54px;
+  background: #25D366;
+  color: #fff !important;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
+  text-decoration: none;
+  transition: all 0.6s ease;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px) scale(0.8);
+  position: relative;
+}
+
+.wa-float-btn.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.wa-float-btn:hover { transform: scale(1.1) translateY(-3px); }
+.wa-float-btn svg { display: block; }
+
+/* Badge de notificação (compacto — não invasivo) */
+.wa-badge {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  background: #ff3b30;
+  color: #fff;
+  font-size: 9px;
+  line-height: 1;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  border: 1.5px solid #fff;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.4s ease;
+}
+
+.wa-badge.show { opacity: 1; transform: scale(1); }
+
+/* Botão fechar */
+.wa-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  padding: 5px;
+  transition: color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wa-close:hover { color: #666; }
+
+/* Classes utilitárias (PageSpeed fix — substituem inline style do JS, evita forced reflow) */
+.wa-typing.is-hidden { display: none !important; }
+.wa-message-text.is-visible { display: block !important; opacity: 0; transition: opacity 500ms ease; }
+.wa-message-text.is-visible.is-in { opacity: 1; }
+
+@media (max-width: 480px) {
+  .wa-premium-container { bottom: 16px; right: 16px; }
+  .wa-bubble { width: 260px; bottom: 72px; }
+}
