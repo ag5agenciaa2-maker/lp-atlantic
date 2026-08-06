@@ -50,6 +50,25 @@
     show();
   }
 
+  /* ---------- Hero: vídeo lateral (showcase) — só carrega/toca em telas ≥1024px ---------- */
+  const sideVideo = $('#heroSideVideo');
+  if (sideVideo) {
+    const mqDesktop = window.matchMedia('(min-width: 1024px)');
+    const showSide = () => { if (sideVideo.readyState >= 2) sideVideo.classList.add('is-ready'); };
+    const loadSideVideo = () => {
+      if (!mqDesktop.matches || sideVideo.dataset.loaded) return;
+      sideVideo.dataset.loaded = 'true';
+      sideVideo.preload = 'auto';
+      sideVideo.load();
+      sideVideo.addEventListener('loadeddata', showSide);
+      sideVideo.addEventListener('canplay', showSide);
+      const p = sideVideo.play();
+      if (p && p.catch) p.catch(() => {});
+    };
+    loadSideVideo();
+    mqDesktop.addEventListener('change', loadSideVideo);
+  }
+
   /* ---------- Reveal on scroll (IntersectionObserver + stagger) ---------- */
   const reveals = $$('.reveal');
   if (reduce) {
