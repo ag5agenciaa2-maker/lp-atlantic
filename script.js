@@ -7,6 +7,14 @@
   const $ = (s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
 
+  /* ---------- Navbar: estado "scrolled" (compacta + opaca) ---------- */
+  const navEl = $('.nav');
+  if (navEl) {
+    const setScrolled = () => navEl.classList.toggle('is-scrolled', window.scrollY > 24);
+    setScrolled();
+    window.addEventListener('scroll', setScrolled, { passive: true });
+  }
+
   /* ---------- Menu mobile (Drawer Premium) ---------- */
   const toggle = $('#navToggle');
   const drawer = $('#drawer');
