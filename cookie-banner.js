@@ -12,7 +12,7 @@
        CONFIGURAÇÕES — Edite aqui para personalizar
        ============================================================ */
     var CONFIG = {
-        storageKey: 'site_cookie_consent',           // Chave no localStorage
+        storageKey: 'atlantic_solucoes_cookie_consent', // Chave no localStorage
         expiryDays: 365,                             // Dias até expirar o consentimento
         bannerDelay: 600,                            // ms antes de mostrar o banner
         showFloatingBtn: false,                      // Mostrar botão flutuante após fechar (Padrão AG5: link no rodapé)

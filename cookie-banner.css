@@ -7,14 +7,14 @@
 
 :root {
     /* ── Cores principais (Sutis e Integradas) ── */
-    --ck-bg: #1a1a1a;
-    /* Fundo neutro e discreto */
-    --ck-accent: #D9B76A;
-    /* Dourado oficial AG5 (padrão) */
-    --ck-accent-dark: #b89a5a;
-    /* Tom de dourado mais fechado para hover */
-    --ck-accent-rgb: 217, 183, 106;
-    /* RGB correspondente ao #D9B76A */
+    --ck-bg: #14181C;
+    /* Fundo neutro e discreto — var(--graphite) do site */
+    --ck-accent: #7ED956;
+    /* Verde oficial Atlântic Soluções Ambientais (var(--accent) do site) */
+    --ck-accent-dark: #5fb238;
+    /* Tom de verde mais fechado para hover */
+    --ck-accent-rgb: 126, 217, 86;
+    /* RGB correspondente ao #7ED956 */
 
     /* ── Texto ── */
     --ck-text-primary: rgba(255, 255, 255, 0.95);
@@ -151,7 +151,7 @@
 /* Primário — Accent */
 .ck-btn--primary {
     background: var(--ck-accent);
-    color: #fff;
+    color: #14181C;
     font-weight: 600;
 }
 
@@ -365,6 +365,27 @@
     padding: 10px 18px;
     border-top: 1px solid var(--ck-modal-border);
     background: var(--ck-modal-footer-bg);
+}
+
+/* Botões outline/ghost precisam de contraste escuro aqui — o footer do modal
+   tem fundo claro, diferente do banner (fundo escuro) onde essas classes
+   foram originalmente pensadas. */
+.ck-modal__footer .ck-btn--outline {
+    border-color: rgba(0, 0, 0, 0.16);
+    color: rgba(0, 0, 0, 0.55);
+}
+
+.ck-modal__footer .ck-btn--outline:hover {
+    border-color: rgba(0, 0, 0, 0.3);
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.ck-modal__footer .ck-btn--ghost {
+    color: var(--ck-accent-dark);
+}
+
+.ck-modal__footer .ck-btn--ghost:hover {
+    color: var(--ck-modal-text);
 }
 
 /* ============================================================

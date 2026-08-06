@@ -441,6 +441,139 @@
 }
 </script>
 
+<!-- ========== COOKIE BANNER UNIVERSAL (Padrão AG5) ========== -->
+<div id="ck-banner" class="ck-banner" role="dialog" aria-modal="true" aria-label="Aviso de cookies" aria-live="polite"
+    aria-hidden="true">
+    <div class="ck-banner__inner">
+        <div class="ck-banner__content">
+            <h2 class="ck-banner__title">Valorizamos sua privacidade</h2>
+            <p class="ck-banner__text">
+                Utilizamos cookies para aprimorar sua experiência de navegação, exibir conteúdo
+                personalizado e analisar nosso tráfego. Ao clicar em <strong>"Aceitar todos"</strong>,
+                você concorda com nosso uso de cookies conforme nossa
+                <a href="politica-de-privacidade.html" class="ck-banner__link">Política de Privacidade</a>.
+            </p>
+        </div>
+        <div class="ck-banner__actions">
+            <button id="ck-customize" class="ck-btn ck-btn--ghost">Personalizar</button>
+            <button id="ck-reject" class="ck-btn ck-btn--outline">Rejeitar</button>
+            <button id="ck-accept-all" class="ck-btn ck-btn--primary">Aceitar todos</button>
+        </div>
+    </div>
+</div>
+
+<div id="ck-modal" class="ck-modal" role="dialog" aria-modal="true" aria-label="Personalizar preferências de cookies"
+    aria-hidden="true">
+    <div class="ck-modal__overlay" id="ck-modal-overlay"></div>
+    <div class="ck-modal__box">
+
+        <div class="ck-modal__header">
+            <h2 class="ck-modal__title">Personalizar preferências de consentimento</h2>
+            <button class="ck-modal__close" id="ck-modal-close" aria-label="Fechar modal">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="ck-modal__body">
+            <p class="ck-modal__intro">
+                Utilizamos cookies para ajudar você a navegar com eficiência e executar certas funções.
+                Os cookies classificados como <strong>"Necessário"</strong> são essenciais para o
+                funcionamento básico do site e não podem ser desativados.
+            </p>
+
+            <div class="ck-category">
+                <div class="ck-category__header">
+                    <div class="ck-category__info">
+                        <h3 class="ck-category__name">Necessário</h3>
+                        <p class="ck-category__desc">
+                            Essenciais para o funcionamento do site. Não armazenam dados pessoalmente identificáveis.
+                        </p>
+                    </div>
+                    <span class="ck-category__badge">Sempre ativo</span>
+                </div>
+            </div>
+
+            <div class="ck-category">
+                <div class="ck-category__header">
+                    <div class="ck-category__info">
+                        <h3 class="ck-category__name">Funcional</h3>
+                        <p class="ck-category__desc">
+                            Ajudam a executar funcionalidades como compartilhamento em mídia social e recursos de
+                            terceiros.
+                        </p>
+                    </div>
+                    <label class="ck-toggle" aria-label="Ativar cookies funcionais">
+                        <input type="checkbox" id="ck-functional" name="functional">
+                        <span class="ck-toggle__slider"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="ck-category">
+                <div class="ck-category__header">
+                    <div class="ck-category__info">
+                        <h3 class="ck-category__name">Analítico</h3>
+                        <p class="ck-category__desc">
+                            Usados para entender como os visitantes interagem com o site (visitantes, taxa de rejeição,
+                            etc.).
+                        </p>
+                    </div>
+                    <label class="ck-toggle" aria-label="Ativar cookies analíticos">
+                        <input type="checkbox" id="ck-analytics" name="analytics">
+                        <span class="ck-toggle__slider"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="ck-category">
+                <div class="ck-category__header">
+                    <div class="ck-category__info">
+                        <h3 class="ck-category__name">Desempenho</h3>
+                        <p class="ck-category__desc">
+                            Analisam índices de desempenho do site para oferecer melhor experiência ao visitante.
+                        </p>
+                    </div>
+                    <label class="ck-toggle" aria-label="Ativar cookies de desempenho">
+                        <input type="checkbox" id="ck-performance" name="performance">
+                        <span class="ck-toggle__slider"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="ck-category">
+                <div class="ck-category__header">
+                    <div class="ck-category__info">
+                        <h3 class="ck-category__name">Publicidade</h3>
+                        <p class="ck-category__desc">
+                            Entregam anúncios personalizados com base nas páginas visitadas anteriormente.
+                        </p>
+                    </div>
+                    <label class="ck-toggle" aria-label="Ativar cookies de publicidade">
+                        <input type="checkbox" id="ck-advertising" name="advertising">
+                        <span class="ck-toggle__slider"></span>
+                    </label>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="ck-modal__footer">
+            <button id="ck-modal-reject" class="ck-btn ck-btn--outline">Rejeitar</button>
+            <button id="ck-modal-save" class="ck-btn ck-btn--ghost">Salvar Preferências</button>
+            <button id="ck-modal-accept-all" class="ck-btn ck-btn--primary">Aceitar todos</button>
+        </div>
+
+    </div>
+</div>
+
+<button id="ck-prefs-btn" class="ck-prefs-btn" aria-label="Preferências de cookies" style="display:none;">
+    Cookies
+</button>
+
+<script src="cookie-banner.js" defer></script>
 <script src="script.js" defer></script>
 </body>
 </html>
