@@ -2,3 +2,4 @@
 .twbuild/
 node_modules/
 .env*
+.claude/
