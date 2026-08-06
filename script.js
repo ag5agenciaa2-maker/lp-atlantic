@@ -154,14 +154,13 @@
       }
       err.classList.remove('is-visible');
       const detalhes = form.mensagem.value.trim();
-      const msg = [
-        `Olá, Atlântic! Sou ${nome} (${tel.value.trim()}).`,
-        `Tipo de imóvel: ${form.tipo.value}`,
-        `Serviço: ${form.servico.value}`,
-        detalhes ? `Detalhes: ${detalhes}` : null,
-        'Gostaria de agendar a vistoria gratuita.'
-      ].filter(Boolean).join('\n');
-      window.open(`https://wa.me/5521995230044?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
+      // ▼ MENSAGEM OBRIGATÓRIA — estrutura fixa (Skill AG5: Padrão de Mensagens WhatsApp) ▼
+      let texto = `Olá, me chamo ${nome}, vim através do site e gostaria de uma informação.\n`;
+      texto += `\n- Telefone: ${tel.value.trim()}`;
+      texto += `\n- Serviço: ${form.servico.value} (${form.tipo.value})`;
+      if (detalhes) texto += `\n- Mensagem: ${detalhes}`;
+      // ▲ ────────────────────────────────────────────────────────────────────────────── ▲
+      window.open(`https://wa.me/5521995230044?text=${encodeURIComponent(texto)}`, '_blank', 'noopener');
     });
   }
 })();
