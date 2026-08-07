@@ -972,7 +972,7 @@ p{margin:0}
 .rodape__grid p{color:var(--tech);font-size:14.5px;line-height:1.7;max-width:38ch}
 .rodape__nap{color:var(--tech);font-size:13px;line-height:1.7;font-style:normal;margin-top:12px;max-width:38ch}
 .rodape__nap a{color:inherit;text-decoration:underline}
-.rodape__logo{width:120px;height:auto;margin-bottom:20px;border-radius:50%}
+.rodape__logo{width:100px;height:auto;margin-bottom:20px;border-radius:50%}
 .rodape__social{display:flex;gap:12px;margin-top:20px}
 .rodape__social a{display:inline-flex;color:var(--tech);transition:color .3s ease,transform .3s ease}
 .rodape__social a:hover{color:var(--accent);transform:translateY(-2px)}
