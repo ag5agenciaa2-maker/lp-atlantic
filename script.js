@@ -64,6 +64,51 @@
     };
     loadSideVideo();
     mqDesktop.addEventListener('change', loadSideVideo);
+
+    /* Botões de som e expandir do vídeo hero */
+    const heroMute = $('#heroMute');
+    const heroExpand = $('#heroExpand');
+    const heroSource = $('#heroSideSource');
+    const fsModal = $('#videoFullscreen');
+    const fsPlayer = $('#videoFsPlayer');
+
+    const muteIcon = '<svg viewBox="0 0 24 24" fill="none"><path d="M4 9v6h4l5 4V5L8 9H4Z" fill="currentColor"/><path d="M16 9c1 1 1 5 0 6M18.5 7.5c2 2 2 7 0 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>';
+    const mutedIcon = '<svg viewBox="0 0 24 24" fill="none"><path d="M4 9v6h4l5 4V5L8 9H4Z" fill="currentColor"/><path d="M15.5 9.5 20 14M20 9.5l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>';
+    heroMute?.addEventListener('click', () => {
+      sideVideo.muted = !sideVideo.muted;
+      heroMute.classList.toggle('is-muted', sideVideo.muted);
+      heroMute.innerHTML = sideVideo.muted ? mutedIcon : muteIcon;
+      heroMute.setAttribute('aria-label', sideVideo.muted ? 'Ativar som' : 'Silenciar');
+    });
+
+    if (heroExpand && fsModal && fsPlayer && heroSource) {
+      let lastFocused = null;
+      const openFs = () => {
+        fsPlayer.src = heroSource.getAttribute('src');
+        fsPlayer.currentTime = sideVideo.currentTime;
+        fsPlayer.muted = false;
+        lastFocused = document.activeElement;
+        fsModal.classList.add('is-open');
+        fsModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        fsPlayer.play().catch(() => {});
+        fsModal.querySelector('.video-fs__close').focus();
+      };
+      const closeFs = () => {
+        fsModal.classList.remove('is-open');
+        fsModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        fsPlayer.pause();
+        fsPlayer.removeAttribute('src');
+        fsPlayer.load();
+        if (lastFocused) lastFocused.focus();
+      };
+      heroExpand.addEventListener('click', openFs);
+      $$('[data-fs-close]', fsModal).forEach((el) => el.addEventListener('click', closeFs));
+      document.addEventListener('keydown', (e) => {
+        if (fsModal.classList.contains('is-open') && e.key === 'Escape') closeFs();
+      });
+    }
   }
 
   /* ---------- Reveal on scroll (IntersectionObserver + stagger) ---------- */
@@ -110,40 +155,62 @@
   }, { threshold: 0.5 });
   counters.forEach((el) => cio.observe(el));
 
-  /* ---------- Carrossel de depoimentos ---------- */
-  const slides = $$('.slide');
-  const dots = $$('#dots button');
-  let index = 0;
-  let timer = null;
+  /* ---------- FAQ: painel de consulta (desktop) / modal (mobile) ---------- */
+  const consultaQs = $$('.consulta__q');
+  const consultaText = $('#consultaText');
+  const consultaData = $('#consultaData');
+  const mqMobile = window.matchMedia('(max-width: 768px)');
+  const faqModal = $('#faqModal');
+  const faqModalTitle = $('#faqModalTitle');
+  const faqModalText = $('#faqModalText');
 
-  const setSlide = (i) => {
-    index = i;
-    slides.forEach((s, n) => s.classList.toggle('is-active', n === i));
-    dots.forEach((d, n) => d.classList.toggle('is-active', n === i));
-  };
-  const play = () => {
-    if (reduce || slides.length < 2) return;
-    clearInterval(timer);
-    timer = setInterval(() => setSlide((index + 1) % slides.length), 5000);
-  };
-  dots.forEach((d) => d.addEventListener('click', () => { setSlide(Number(d.dataset.dot)); play(); }));
-  play();
-
-  /* ---------- FAQ (acordeão) ---------- */
-  $$('.acc__q').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const panel = btn.nextElementSibling;
-      const isOpen = btn.getAttribute('aria-expanded') === 'true';
-      $$('.acc__q').forEach((b) => {
-        b.setAttribute('aria-expanded', 'false');
-        b.nextElementSibling.style.maxHeight = '0px';
+  if (consultaQs.length && consultaData) {
+    let faqLastFocused = null;
+    const closeFaqModal = () => {
+      faqModal?.classList.remove('is-open');
+      faqModal?.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (faqLastFocused) faqLastFocused.focus();
+    };
+    if (faqModal) {
+      $$('[data-faq-close]', faqModal).forEach((el) => el.addEventListener('click', closeFaqModal));
+      document.addEventListener('keydown', (e) => {
+        if (faqModal.classList.contains('is-open') && e.key === 'Escape') closeFaqModal();
       });
-      if (!isOpen) {
+    }
+
+    consultaQs.forEach((btn, i) => {
+      btn.addEventListener('click', () => {
+        const answer = consultaData.querySelector(`[data-a="${i}"]`);
+        if (!answer) return;
+
+        if (mqMobile.matches && faqModal && faqModalText) {
+          if (faqModalTitle) faqModalTitle.textContent = btn.querySelector('.consulta__q-t')?.textContent.trim() || '';
+          faqModalText.textContent = answer.textContent;
+          faqLastFocused = document.activeElement;
+          faqModal.classList.add('is-open');
+          faqModal.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+          faqModal.querySelector('.faq-modal__close')?.focus();
+          return;
+        }
+
+        if (btn.classList.contains('is-active')) return;
+        consultaQs.forEach((b) => {
+          b.classList.remove('is-active');
+          b.setAttribute('aria-expanded', 'false');
+        });
+        btn.classList.add('is-active');
         btn.setAttribute('aria-expanded', 'true');
-        panel.style.maxHeight = `${panel.scrollHeight}px`;
-      }
+        if (consultaText) {
+          consultaText.textContent = answer.textContent;
+          consultaText.style.animation = 'none';
+          void consultaText.offsetWidth;
+          consultaText.style.animation = '';
+        }
+      });
     });
-  });
+  }
 
   /* ---------- Formulário → WhatsApp ---------- */
   const form = $('#form');
@@ -275,5 +342,307 @@
     if (badge) badge.classList.remove('show');
     if (autoHideTimer) clearTimeout(autoHideTimer);
     if (badgeTimer) clearTimeout(badgeTimer);
+  });
+})();
+
+/* ---------- Lightbox da galeria (seção Bastidores) ---------- */
+(() => {
+  'use strict';
+  const $ = (s, c = document) => c.querySelector(s);
+  const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
+
+  const triggers = $$('[data-lightbox-open]');
+  const lightbox = $('#lightbox');
+  if (!triggers.length || !lightbox) return;
+
+  const items = triggers.map((btn) => {
+    const figure = btn.closest('.galeria__item');
+    return {
+      src: btn.querySelector('img').getAttribute('src'),
+      alt: btn.querySelector('img').getAttribute('alt') || '',
+      idx: figure.querySelector('.galeria__idx')?.textContent.trim() || '',
+      title: figure.querySelector('.galeria__title')?.textContent.trim() || '',
+      desc: figure.querySelector('.galeria__desc')?.textContent.trim() || '',
+    };
+  });
+
+  const imgEl = $('#lightboxImg');
+  const idxEl = $('#lightboxIdx');
+  const titleEl = $('#lightboxTitle');
+  const counterEl = $('#lightboxCounter');
+  const prevBtn = $('[data-lightbox-prev]');
+  const nextBtn = $('[data-lightbox-next]');
+  let current = 0;
+  let lastFocused = null;
+
+  const render = () => {
+    const item = items[current];
+    imgEl.src = item.src;
+    imgEl.alt = item.alt;
+    idxEl.textContent = item.idx;
+    titleEl.textContent = item.title;
+    counterEl.textContent = `${current + 1} / ${items.length}`;
+  };
+
+  const open = (i) => {
+    current = i;
+    lastFocused = document.activeElement;
+    render();
+    lightbox.classList.add('is-open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    lightbox.querySelector('.lightbox__close').focus();
+  };
+  const close = () => {
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (lastFocused) lastFocused.focus();
+  };
+  const step = (dir) => {
+    current = (current + dir + items.length) % items.length;
+    render();
+  };
+
+  triggers.forEach((btn, i) => btn.addEventListener('click', () => open(i)));
+  $$('[data-lightbox-close]', lightbox).forEach((el) => el.addEventListener('click', close));
+  prevBtn?.addEventListener('click', () => step(-1));
+  nextBtn?.addEventListener('click', () => step(1));
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('is-open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') step(-1);
+    if (e.key === 'ArrowRight') step(1);
+  });
+})();
+
+/* ---------- Player de vídeos + playlist (seção compacta) ---------- */
+(() => {
+  'use strict';
+  const $ = (s, c = document) => c.querySelector(s);
+  const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
+
+  const items = $$('.player__item');
+  const playerEl = $('.player');
+  const stage = $('.player__stage');
+  const stageVideo = $('#playerVideo');
+  const stageSource = $('#playerSource');
+  const toggle = $('#playerToggle');
+  const titleEl = $('#playerTitle');
+  const extras = $('#playerExtras');
+  const muteBtn = $('#playerMute');
+  const expandBtn = $('#playerExpand');
+  const fsModal = $('#videoFullscreen');
+  const fsPlayer = $('#videoFsPlayer');
+  if (!items.length || !stageVideo || !toggle) return;
+
+  const playIcon = '<svg viewBox="0 0 24 24" fill="none"><path d="M8 5.5v13l11-6.5-11-6.5Z" fill="currentColor"/></svg>';
+  const pauseIcon = '<svg viewBox="0 0 24 24" fill="none"><rect x="6" y="5" width="4" height="14" rx="1" fill="currentColor"/><rect x="14" y="5" width="4" height="14" rx="1" fill="currentColor"/></svg>';
+
+  stageVideo.addEventListener('loadedmetadata', () => {
+    if (!playerEl || !stage || !stageVideo.videoWidth || !stageVideo.videoHeight) return;
+    const stageH = stage.clientHeight || 480;
+    const idealW = stageH * (stageVideo.videoWidth / stageVideo.videoHeight);
+    playerEl.style.setProperty('--stage-w', `${Math.round(idealW)}px`);
+  });
+
+  const select = (i, autoplay) => {
+    const item = items[i];
+    items.forEach((it, n) => it.classList.toggle('is-active', n === i));
+    stageSource.setAttribute('src', item.dataset.src);
+    stageVideo.load();
+    if (titleEl) titleEl.textContent = item.textContent.trim().replace(/^\d{2}|"/, '').trim();
+    if (autoplay) {
+      stageVideo.muted = false;
+      stageVideo.play().catch(() => {});
+    }
+  };
+
+  items.forEach((item, i) => item.addEventListener('click', () => select(i, true)));
+
+  toggle.addEventListener('click', () => {
+    if (stageVideo.paused) {
+      stageVideo.muted = false;
+      stageVideo.play().catch(() => {});
+    } else {
+      stageVideo.pause();
+    }
+  });
+  stageVideo.addEventListener('play', () => {
+    toggle.innerHTML = pauseIcon; toggle.classList.add('is-playing'); toggle.setAttribute('aria-label', 'Pausar');
+    extras?.classList.add('is-visible');
+  });
+  stageVideo.addEventListener('pause', () => {
+    toggle.innerHTML = playIcon; toggle.classList.remove('is-playing'); toggle.setAttribute('aria-label', 'Reproduzir com som');
+    extras?.classList.remove('is-visible');
+  });
+  stageVideo.addEventListener('ended', () => select((items.findIndex((it) => it.classList.contains('is-active')) + 1) % items.length, true));
+
+  // Pausa e reinicia o vídeo ao sair/entrar na seção
+  const videosSection = document.getElementById('videos');
+  if (videosSection) {
+    let wasPlaying = false;
+    const sectionIo = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          if (wasPlaying) {
+            stageVideo.currentTime = 0;
+            stageVideo.play().catch(() => {});
+          }
+        } else {
+          wasPlaying = !stageVideo.paused;
+          stageVideo.pause();
+          stageVideo.currentTime = 0;
+        }
+      });
+    }, { threshold: 0.15 });
+    sectionIo.observe(videosSection);
+  }
+
+  // Botão de som
+  const muteIcon = '<svg viewBox="0 0 24 24" fill="none"><path d="M4 9v6h4l5 4V5L8 9H4Z" fill="currentColor"/><path d="M16 9c1 1 1 5 0 6M18.5 7.5c2 2 2 7 0 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>';
+  const mutedIcon = '<svg viewBox="0 0 24 24" fill="none"><path d="M4 9v6h4l5 4V5L8 9H4Z" fill="currentColor"/><path d="M15.5 9.5 20 14M20 9.5l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>';
+  muteBtn?.addEventListener('click', () => {
+    stageVideo.muted = !stageVideo.muted;
+    muteBtn.classList.toggle('is-muted', stageVideo.muted);
+    muteBtn.innerHTML = stageVideo.muted ? mutedIcon : muteIcon;
+    muteBtn.setAttribute('aria-label', stageVideo.muted ? 'Ativar som' : 'Silenciar');
+  });
+
+  // Botão de expandir → modal em tela cheia
+  if (expandBtn && fsModal && fsPlayer) {
+    let lastFocused = null;
+    const openFs = () => {
+      fsPlayer.src = stageSource.getAttribute('src');
+      fsPlayer.currentTime = stageVideo.currentTime;
+      fsPlayer.muted = false;
+      lastFocused = document.activeElement;
+      fsModal.classList.add('is-open');
+      fsModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      stageVideo.pause();
+      fsPlayer.play().catch(() => {});
+      fsModal.querySelector('.video-fs__close').focus();
+    };
+    const closeFs = () => {
+      fsModal.classList.remove('is-open');
+      fsModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      fsPlayer.pause();
+      fsPlayer.removeAttribute('src');
+      fsPlayer.load();
+      if (lastFocused) lastFocused.focus();
+    };
+    expandBtn.addEventListener('click', openFs);
+    $$('[data-fs-close]', fsModal).forEach((el) => el.addEventListener('click', closeFs));
+    document.addEventListener('keydown', (e) => {
+      if (fsModal.classList.contains('is-open') && e.key === 'Escape') closeFs();
+    });
+  }
+})();
+
+/* ---------- Vídeos mobile: cards roláveis ---------- */
+(() => {
+  'use strict';
+  const $ = (s, c = document) => c.querySelector(s);
+  const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const cards = $$('.video-mobile__card');
+  const fsModal = $('#videoFullscreen');
+  const fsPlayer = $('#videoFsPlayer');
+  if (!cards.length || !fsModal || !fsPlayer) return;
+
+  // Preview mudo em loop ao entrar na viewport
+  if (!reduce) {
+    const pio = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const vid = entry.target.querySelector('video');
+        if (!vid) return;
+        if (entry.isIntersecting) vid.play().catch(() => {});
+        else vid.pause();
+      });
+    }, { threshold: 0.6 });
+    cards.forEach((c) => pio.observe(c));
+  }
+
+  let lastFocused = null;
+  const open = (i) => {
+    const card = cards[i];
+    const src = card.querySelector('source')?.getAttribute('src').replace('#t=0.5', '') || '';
+    fsPlayer.src = src;
+    fsPlayer.currentTime = 0;
+    fsPlayer.muted = false;
+    lastFocused = document.activeElement;
+    fsModal.classList.add('is-open');
+    fsModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    fsPlayer.play().catch(() => {});
+    fsModal.querySelector('.video-fs__close').focus();
+  };
+  const close = () => {
+    fsModal.classList.remove('is-open');
+    fsModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    fsPlayer.pause();
+    fsPlayer.removeAttribute('src');
+    fsPlayer.load();
+    if (lastFocused) lastFocused.focus();
+  };
+
+  cards.forEach((card, i) => card.addEventListener('click', () => open(i)));
+  $$('[data-fs-close]', fsModal).forEach((el) => el.addEventListener('click', close));
+  document.addEventListener('keydown', (e) => {
+    if (fsModal.classList.contains('is-open') && e.key === 'Escape') close();
+  });
+})();
+
+/* ---------- Modal de depoimento (dossiê "O que dizem") ---------- */
+(() => {
+  'use strict';
+  const $ = (s, c = document) => c.querySelector(s);
+  const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
+
+  const triggers = $$('[data-depo-open]');
+  const modal = $('#depoModal');
+  if (!triggers.length || !modal) return;
+
+  const items = triggers.map((btn) => ({
+    num: btn.querySelector('.dossie__num')?.textContent.trim() || '',
+    text: btn.querySelector('.dossie__quote-p')?.textContent.trim() || '',
+    name: btn.querySelector('.dossie__foot-name')?.textContent.trim() || '',
+    meta: btn.querySelector('.dossie__meta')?.textContent.trim() || '',
+  }));
+
+  const numEl = $('#depoModalNum');
+  const textEl = $('#depoModalText');
+  const nameEl = $('#depoModalName');
+  const metaEl = $('#depoModalMeta');
+  let lastFocused = null;
+
+  const open = (i) => {
+    const item = items[i];
+    numEl.textContent = item.num;
+    textEl.textContent = item.text;
+    nameEl.textContent = item.name;
+    metaEl.textContent = item.meta;
+    lastFocused = document.activeElement;
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    modal.querySelector('.depo-modal__close').focus();
+  };
+  const close = () => {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (lastFocused) lastFocused.focus();
+  };
+
+  triggers.forEach((btn, i) => btn.addEventListener('click', () => open(i)));
+  $$('[data-depo-close]', modal).forEach((el) => el.addEventListener('click', close));
+  document.addEventListener('keydown', (e) => {
+    if (modal.classList.contains('is-open') && e.key === 'Escape') close();
   });
 })();
