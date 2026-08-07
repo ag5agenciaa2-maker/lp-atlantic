@@ -10,9 +10,18 @@
   /* ---------- Navbar: estado "scrolled" (compacta + opaca) ---------- */
   const navEl = $('.nav');
   if (navEl) {
-    const setScrolled = () => navEl.classList.toggle('is-scrolled', window.scrollY > 24);
+    let scrollTicking = false;
+    const setScrolled = () => {
+      navEl.classList.toggle('is-scrolled', window.scrollY > 24);
+      scrollTicking = false;
+    };
     setScrolled();
-    window.addEventListener('scroll', setScrolled, { passive: true });
+    window.addEventListener('scroll', () => {
+      if (!scrollTicking) {
+        requestAnimationFrame(setScrolled);
+        scrollTicking = true;
+      }
+    }, { passive: true });
   }
 
   /* ---------- Menu mobile (Drawer Premium) ---------- */
@@ -27,14 +36,14 @@
       drawerOverlay.classList.add('is-open');
       drawer.setAttribute('aria-hidden', 'false');
       toggle.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
+      document.body.classList.add('no-scroll');
     };
     const closeDrawer = () => {
       drawer.classList.remove('is-open');
       drawerOverlay.classList.remove('is-open');
       drawer.setAttribute('aria-hidden', 'true');
       toggle.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
+      document.body.classList.remove('no-scroll');
     };
     toggle.addEventListener('click', openDrawer);
     drawerClose?.addEventListener('click', closeDrawer);
@@ -90,14 +99,14 @@
         lastFocused = document.activeElement;
         fsModal.classList.add('is-open');
         fsModal.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
+        document.body.classList.add('no-scroll');
         fsPlayer.play().catch(() => {});
         fsModal.querySelector('.video-fs__close').focus();
       };
       const closeFs = () => {
         fsModal.classList.remove('is-open');
         fsModal.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
+        document.body.classList.remove('no-scroll');
         fsPlayer.pause();
         fsPlayer.removeAttribute('src');
         fsPlayer.load();
@@ -169,7 +178,7 @@
     const closeFaqModal = () => {
       faqModal?.classList.remove('is-open');
       faqModal?.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
+      document.body.classList.remove('no-scroll');
       if (faqLastFocused) faqLastFocused.focus();
     };
     if (faqModal) {
@@ -190,7 +199,7 @@
           faqLastFocused = document.activeElement;
           faqModal.classList.add('is-open');
           faqModal.setAttribute('aria-hidden', 'false');
-          document.body.style.overflow = 'hidden';
+          document.body.classList.add('no-scroll');
           faqModal.querySelector('.faq-modal__close')?.focus();
           return;
         }
@@ -390,13 +399,13 @@
     render();
     lightbox.classList.add('is-open');
     lightbox.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
+    document.body.classList.add('no-scroll');
     lightbox.querySelector('.lightbox__close').focus();
   };
   const close = () => {
     lightbox.classList.remove('is-open');
     lightbox.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
+    document.body.classList.remove('no-scroll');
     if (lastFocused) lastFocused.focus();
   };
   const step = (dir) => {
@@ -520,7 +529,7 @@
       lastFocused = document.activeElement;
       fsModal.classList.add('is-open');
       fsModal.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
+      document.body.classList.add('no-scroll');
       stageVideo.pause();
       fsPlayer.play().catch(() => {});
       fsModal.querySelector('.video-fs__close').focus();
@@ -528,7 +537,7 @@
     const closeFs = () => {
       fsModal.classList.remove('is-open');
       fsModal.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
+      document.body.classList.remove('no-scroll');
       fsPlayer.pause();
       fsPlayer.removeAttribute('src');
       fsPlayer.load();
@@ -577,14 +586,14 @@
     lastFocused = document.activeElement;
     fsModal.classList.add('is-open');
     fsModal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
+    document.body.classList.add('no-scroll');
     fsPlayer.play().catch(() => {});
     fsModal.querySelector('.video-fs__close').focus();
   };
   const close = () => {
     fsModal.classList.remove('is-open');
     fsModal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
+    document.body.classList.remove('no-scroll');
     fsPlayer.pause();
     fsPlayer.removeAttribute('src');
     fsPlayer.load();
@@ -630,13 +639,13 @@
     lastFocused = document.activeElement;
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
+    document.body.classList.add('no-scroll');
     modal.querySelector('.depo-modal__close').focus();
   };
   const close = () => {
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
+    document.body.classList.remove('no-scroll');
     if (lastFocused) lastFocused.focus();
   };
 
