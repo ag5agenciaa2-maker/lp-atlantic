@@ -6,6 +6,30 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://atlanticsolucoes.com.br/blog/</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://atlanticsolucoes.com.br/blog/limpeza-de-reservatorios</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://atlanticsolucoes.com.br/blog/controle-de-pragas</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://atlanticsolucoes.com.br/blog/manutencao-predial-preventiva</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://atlanticsolucoes.com.br/termos-e-condicoes</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
