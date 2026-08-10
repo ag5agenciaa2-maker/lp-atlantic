@@ -56,6 +56,49 @@
     });
   }
 
+  /* ---------- Hero: vídeo aéreo de fundo — só entra se a conexão aguentar ---------- */
+  const bgVideo = $('#heroBgVideo');
+  if (bgVideo) {
+    const R2 = 'https://pub-4d01ead2909245e6a29f92a55c88df63.r2.dev/hero-aerea-condominio.mp4';
+    const net = navigator.connection || {};
+    const conexaoFraca = net.saveData === true || /^(slow-)?2g$/.test(net.effectiveType || '');
+
+    // Sem movimento, dados economizados ou 2G: a foto do poster já resolve o hero.
+    if (!reduce && !conexaoFraca) {
+      const ligar = () => {
+        bgVideo.classList.add('is-live');
+        document.querySelector('.hero')?.classList.add('has-video');
+      };
+      bgVideo.addEventListener('canplay', ligar, { once: true });
+      bgVideo.src = R2;
+      bgVideo.load();
+      const p = bgVideo.play();
+      if (p && p.catch) p.catch(() => {});
+    }
+  }
+
+  /* ---------- Equipe: vídeo vertical — carrega só quando a seção chega na tela ---------- */
+  const equipeVideo = $('#equipeVideo');
+  if (equipeVideo && !reduce) {
+    const src = 'https://pub-4d01ead2909245e6a29f92a55c88df63.r2.dev/equipe-cobertura-vertical.mp4';
+    const net = navigator.connection || {};
+    if (net.saveData !== true) {
+      const obs = new IntersectionObserver((entradas) => {
+        entradas.forEach((e) => {
+          if (!e.isIntersecting) { equipeVideo.pause(); return; }
+          if (!equipeVideo.dataset.loaded) {
+            equipeVideo.dataset.loaded = 'true';
+            equipeVideo.src = src;
+            equipeVideo.load();
+          }
+          const p = equipeVideo.play();
+          if (p && p.catch) p.catch(() => {});
+        });
+      }, { rootMargin: '200px 0px', threshold: 0.15 });
+      obs.observe(equipeVideo);
+    }
+  }
+
   /* ---------- Hero: vídeo lateral (showcase) — só carrega/toca em telas ≥1024px ---------- */
   const sideVideo = $('#heroSideVideo');
   if (sideVideo) {
@@ -354,7 +397,7 @@
   });
 })();
 
-/* ---------- Lightbox da galeria (seção Bastidores) ---------- */
+/* ---------- Lightbox da galeria (seção Sobre) ---------- */
 (() => {
   'use strict';
   const $ = (s, c = document) => c.querySelector(s);
@@ -364,14 +407,17 @@
   const lightbox = $('#lightbox');
   if (!triggers.length || !lightbox) return;
 
-  const items = triggers.map((btn) => {
-    const figure = btn.closest('.galeria__item');
+  // A galeria é limpa (sem legenda visível), então o alt da imagem
+  // é o que descreve a foto ampliada.
+  const items = triggers.map((btn, i) => {
+    const img = btn.querySelector('img');
+    const alt = img.getAttribute('alt') || '';
     return {
-      src: btn.querySelector('img').getAttribute('src'),
-      alt: btn.querySelector('img').getAttribute('alt') || '',
-      idx: figure.querySelector('.galeria__idx')?.textContent.trim() || '',
-      title: figure.querySelector('.galeria__title')?.textContent.trim() || '',
-      desc: figure.querySelector('.galeria__desc')?.textContent.trim() || '',
+      src: img.getAttribute('src'),
+      alt,
+      idx: String(i + 1).padStart(2, '0'),
+      title: alt,
+      desc: '',
     };
   });
 
