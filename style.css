@@ -188,7 +188,7 @@ p{margin:0}
 .hero__scrim--bottom{background:linear-gradient(0deg,var(--graphite) 2%,transparent 45%)}
 .hero__inner{position:relative;width:100%;max-width:var(--wrap);margin:0 auto;padding:105px var(--pad) 50px}
 .hero__grid{display:block}
-.hero__copy{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.77fr);gap:56px;align-items:center}
+.hero__copy{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.77fr);gap:0 56px;align-items:center}
 .hero__copy > .eyebrow,
 .hero__copy > h1,
 .hero__copy > .hero__lead,
