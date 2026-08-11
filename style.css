@@ -1435,3 +1435,5 @@ p{margin:0}
 .geocard:hover .geocard__cta{color:var(--accent)}
 @media(max-width:900px){.georegioes__grid{grid-template-columns:1fr 1fr;gap:12px}}
 @media(max-width:520px){.georegioes__grid{grid-template-columns:1fr}}
+
+.blogsec__more{display:flex;justify-content:center;margin-top:44px}
