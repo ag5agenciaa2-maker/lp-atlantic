@@ -249,6 +249,24 @@
       </div>
     </div>
 
+    <!-- CARDE DE VÍDEO DE DEPOIMENTO DE DESTAQUE (JOHN WAYNE) -->
+    <div class="depo-featured reveal">
+      <div class="depo-featured__media">
+        <video id="depoVideoWayne" controls playsinline preload="metadata">
+          <source src="https://pub-4d01ead2909245e6a29f92a55c88df63.r2.dev/depoimento-john-wayne.mp4#t=0.5" type="video/mp4" />
+        </video>
+      </div>
+      <div class="depo-featured__info">
+        <span class="depo-featured__badge">DEPOIMENTO EM VÍDEO DE CLIENTE</span>
+        <h3>Depoimento de Cliente, JW Gestão de Condomínios</h3>
+        <p class="depo-featured__quote">“Trabalhar com manutenção com o grupo Atlântic é a certeza de dormir tranquilo. Porque eu, como síndico, me preocupo com toda a infraestrutura do condomínio.”</p>
+        <div class="depo-featured__author">
+          <strong>John Wayne</strong>
+          <span>CEO, JW Gestão de Condomínios</span>
+        </div>
+      </div>
+    </div>
+
     <div class="dossie reveal">
       <button type="button" class="dossie__row" data-depo-open data-idx="0">
         <span class="dossie__num">01</span>
@@ -315,20 +333,13 @@
     <div class="sobre__sticky">
       <div class="sobre__mosaic">
         <figure class="sm__main">
-          <img src="assets/atlantic-solution-fundador-empresa-mage-rj.webp" alt="Fundador da Atlântic Soluções Ambientais" loading="lazy" />
+          <video autoplay muted loop playsinline poster="assets/atlantic-solution-equipe-vertical-poster.webp">
+            <source src="https://pub-4d01ead2909245e6a29f92a55c88df63.r2.dev/equipe-topo-predio-vertical.mp4#t=0.5" type="video/mp4" />
+          </video>
           <div class="sobre__caption">
             <p class="eyebrow eyebrow--accent">// FUNDAÇÃO 05/2020 //</p>
-            <p>Fundador da Atlântic Soluções Ambientais, na sede da empresa em Magé/RJ.</p>
+            <p>Atlântic Soluções Ambientais: equipe técnica própria no RJ.</p>
           </div>
-        </figure>
-        <figure class="sm__thumb">
-          <img src="assets/atlantic-solution-condominio-horizontal-aereo.webp" alt="Condomínio atendido pela Atlântic visto de cima" loading="lazy" />
-        </figure>
-        <figure class="sm__thumb">
-          <img src="assets/atlantic-solution-drone-limpeza-cisterna.webp" alt="Limpeza de cisterna registrada com drone" loading="lazy" />
-        </figure>
-        <figure class="sm__thumb">
-          <img src="assets/atlantic-solution-manutencao-piscina.webp" alt="Manutenção de piscina em condomínio" loading="lazy" />
         </figure>
       </div>
     </div>
@@ -336,11 +347,9 @@
       <p class="eyebrow eyebrow--leaf reveal">// QUEM SOMOS //</p>
       <h2 class="reveal">6 anos resolvendo o que a maioria dos fornecedores terceiriza.</h2>
       <figure class="sobre__img-mobile reveal">
-        <img src="assets/atlantic-solution-fundador-empresa-mage-rj.webp" alt="Fundador da Atlântic Soluções Ambientais" loading="lazy" />
-        <div class="sobre__img-mobile-row">
-          <img src="assets/atlantic-solution-condominio-horizontal-aereo.webp" alt="Condomínio atendido pela Atlântic visto de cima" loading="lazy" />
-          <img src="assets/atlantic-solution-drone-limpeza-cisterna.webp" alt="Limpeza de cisterna registrada com drone" loading="lazy" />
-        </div>
+        <video autoplay muted loop playsinline poster="assets/atlantic-solution-equipe-vertical-poster.webp">
+          <source src="https://pub-4d01ead2909245e6a29f92a55c88df63.r2.dev/equipe-topo-predio-vertical.mp4#t=0.5" type="video/mp4" />
+        </video>
         <figcaption>
           <span class="eyebrow eyebrow--accent">// FUNDAÇÃO 05/2020 //</span>
           Fundador da Atlântic Soluções Ambientais, na sede da empresa em Magé/RJ.
@@ -367,83 +376,237 @@
     </div>
   </div>
 
-  <div class="wrap">
-    <div class="galeria-bento reveal">
-      <figure class="bento__item bento__item--wide">
-        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Reunião técnica com cliente antes da obra">
-          <img src="assets/atlantic-solution-reuniao-tecnica-cliente-obra.webp" alt="Reunião técnica da Atlântic com cliente antes do início da obra" loading="lazy" />
+  <!-- DUPLO CARROSSEL PREMIUM (DIREITA E ESQUERDA) -->
+  <div class="dual-carrossel-sec reveal">
+    <!-- Carrossel Superior: Direita -->
+    <div class="carrossel-row carrossel-row--right" aria-label="Registros de operações Atlântic carrossel superior">
+      <figure class="carrossel-card carrossel-card--h">
+        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Equipe Atlântic em cobertura predial">
+          <img src="assets/atlantic-solution-equipe-cobertura-horizontal.webp" alt="Equipe Atlântic reunida em cobertura" loading="lazy" />
         </button>
-        <figcaption class="bento__caption">Reunião técnica com cliente antes da obra</figcaption>
+        <figcaption class="carrossel-caption">Equipe Atlântic em cobertura predial</figcaption>
       </figure>
 
-      <figure class="bento__item">
+      <figure class="carrossel-card carrossel-card--v">
         <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Impermeabilização de borda de piscina">
           <img src="assets/atlantic-solution-impermeabilizacao-borda-piscina.webp" alt="Impermeabilização de borda de piscina" loading="lazy" />
         </button>
-        <figcaption class="bento__caption">Impermeabilização de borda de piscina</figcaption>
+        <figcaption class="carrossel-caption">Impermeabilização de borda</figcaption>
       </figure>
 
-      <figure class="bento__item">
-        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Equipe Atlântic reunida na cobertura">
-          <img src="assets/atlantic-solution-equipe-cobertura-horizontal.webp" alt="Equipe Atlântic reunida na cobertura de um condomínio" loading="lazy" />
-        </button>
-        <figcaption class="bento__caption">Equipe Atlântic na cobertura de condomínio</figcaption>
-      </figure>
-
-      <figure class="bento__item">
+      <figure class="carrossel-card carrossel-card--h">
         <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Vistoria elétrica em quadros de medição">
           <img src="assets/atlantic-solution-vistoria-eletrica-quadros.webp" alt="Vistoria elétrica em quadros de medição" loading="lazy" />
         </button>
-        <figcaption class="bento__caption">Vistoria elétrica em quadros de medição</figcaption>
+        <figcaption class="carrossel-caption">Vistoria elétrica técnica</figcaption>
       </figure>
 
-      <figure class="bento__item bento__item--wide">
-        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Início de obra, material no canteiro">
-          <img src="assets/atlantic-solution-obra-material-inicio.webp" alt="Início de obra, material no canteiro" loading="lazy" />
+      <figure class="carrossel-card carrossel-card--v">
+        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Reforma estrutural de piscina">
+          <img src="assets/atlantic-solution-equipe-reforma-piscina.webp" alt="Reforma estrutural de piscina" loading="lazy" />
         </button>
-        <figcaption class="bento__caption">Início de obra, material no canteiro</figcaption>
+        <figcaption class="carrossel-caption">Reforma estrutural de piscina</figcaption>
       </figure>
 
-      <figure class="bento__item">
+      <figure class="carrossel-card carrossel-card--h">
+        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Canteiro de obras e insumos">
+          <img src="assets/atlantic-solution-obra-material-inicio.webp" alt="Início de obra material no canteiro" loading="lazy" />
+        </button>
+        <figcaption class="carrossel-caption">Canteiro de obras e insumos</figcaption>
+      </figure>
+
+      <figure class="carrossel-card carrossel-card--v">
         <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Termonebulização em área comum">
           <img src="assets/atlantic-solution-termonebulizacao-condominio-2.webp" alt="Termonebulização em área comum" loading="lazy" />
         </button>
-        <figcaption class="bento__caption">Termonebulização em área comum</figcaption>
+        <figcaption class="carrossel-caption">Desinsetização em garagens</figcaption>
       </figure>
 
-      <figure class="bento__item">
+      <figure class="carrossel-card carrossel-card--h">
+        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Limpeza interna de reservatório">
+          <img src="assets/atlantic-solution-limpeza-cisterna-interna-2.webp" alt="Limpeza e higienização de cisterna" loading="lazy" />
+        </button>
+        <figcaption class="carrossel-caption">Limpeza de reservatório de água</figcaption>
+      </figure>
+
+      <figure class="carrossel-card carrossel-card--v">
         <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Tampas de reservatório recuperadas">
           <img src="assets/atlantic-solution-tampas-reservatorio-impermeabilizadas.webp" alt="Tampas de reservatório recuperadas" loading="lazy" />
         </button>
-        <figcaption class="bento__caption">Tampas de reservatório recuperadas</figcaption>
+        <figcaption class="carrossel-caption">Vedação hermética de tampas</figcaption>
       </figure>
 
-      <figure class="bento__item">
+      <!-- Duplicação para loop contínuo -->
+      <figure class="carrossel-card carrossel-card--h">
+        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Equipe Atlântic em cobertura predial">
+          <img src="assets/atlantic-solution-equipe-cobertura-horizontal.webp" alt="Equipe Atlântic reunida em cobertura" loading="lazy" />
+        </button>
+        <figcaption class="carrossel-caption">Equipe Atlântic em cobertura predial</figcaption>
+      </figure>
+
+      <figure class="carrossel-card carrossel-card--v">
+        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Impermeabilização de borda de piscina">
+          <img src="assets/atlantic-solution-impermeabilizacao-borda-piscina.webp" alt="Impermeabilização de borda de piscina" loading="lazy" />
+        </button>
+        <figcaption class="carrossel-caption">Impermeabilização de borda</figcaption>
+      </figure>
+
+      <figure class="carrossel-card carrossel-card--h">
+        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Vistoria elétrica em quadros de medição">
+          <img src="assets/atlantic-solution-vistoria-eletrica-quadros.webp" alt="Vistoria elétrica em quadros de medição" loading="lazy" />
+        </button>
+        <figcaption class="carrossel-caption">Vistoria elétrica técnica</figcaption>
+      </figure>
+
+      <figure class="carrossel-card carrossel-card--v">
+        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Reforma estrutural de piscina">
+          <img src="assets/atlantic-solution-equipe-reforma-piscina.webp" alt="Reforma estrutural de piscina" loading="lazy" />
+        </button>
+        <figcaption class="carrossel-caption">Reforma estrutural de piscina</figcaption>
+      </figure>
+
+      <figure class="carrossel-card carrossel-card--h">
+        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Canteiro de obras e insumos">
+          <img src="assets/atlantic-solution-obra-material-inicio.webp" alt="Início de obra material no canteiro" loading="lazy" />
+        </button>
+        <figcaption class="carrossel-caption">Canteiro de obras e insumos</figcaption>
+      </figure>
+
+      <figure class="carrossel-card carrossel-card--v">
+        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Termonebulização em área comum">
+          <img src="assets/atlantic-solution-termonebulizacao-condominio-2.webp" alt="Termonebulização em área comum" loading="lazy" />
+        </button>
+        <figcaption class="carrossel-caption">Desinsetização em garagens</figcaption>
+      </figure>
+
+      <figure class="carrossel-card carrossel-card--h">
+        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Limpeza interna de reservatório">
+          <img src="assets/atlantic-solution-limpeza-cisterna-interna-2.webp" alt="Limpeza e higienização de cisterna" loading="lazy" />
+        </button>
+        <figcaption class="carrossel-caption">Limpeza de reservatório de água</figcaption>
+      </figure>
+
+      <figure class="carrossel-card carrossel-card--v">
+        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Tampas de reservatório recuperadas">
+          <img src="assets/atlantic-solution-tampas-reservatorio-impermeabilizadas.webp" alt="Tampas de reservatório recuperadas" loading="lazy" />
+        </button>
+        <figcaption class="carrossel-caption">Vedação hermética de tampas</figcaption>
+      </figure>
+    </div>
+
+    <!-- Carrossel Inferior: Esquerda -->
+    <div class="carrossel-row carrossel-row--left" aria-label="Registros de operações Atlântic carrossel inferior">
+      <figure class="carrossel-card carrossel-card--v">
         <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Limpeza de piscina em condomínio">
           <img src="assets/atlantic-solution-limpeza-piscina.webp" alt="Limpeza de piscina em condomínio" loading="lazy" />
         </button>
-        <figcaption class="bento__caption">Limpeza de piscina em condomínio</figcaption>
+        <figcaption class="carrossel-caption">Manutenção periódica de piscina</figcaption>
       </figure>
 
-      <figure class="bento__item">
+      <figure class="carrossel-card carrossel-card--v">
         <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Manutenção de tubulação predial">
-          <img src="assets/atlantic-solution-manutencao-tubulacao.webp" alt="Manutenção de tubulação predial" loading="lazy" />
+          <img src="assets/atlantic-solution-manutencao-tubulacao.webp" alt="Manutenção de barriletes e tubulação" loading="lazy" />
         </button>
-        <figcaption class="bento__caption">Manutenção de tubulação predial</figcaption>
+        <figcaption class="carrossel-caption">Manutenção de barriletes prediais</figcaption>
       </figure>
 
-      <figure class="bento__item">
+      <figure class="carrossel-card carrossel-card--h">
+        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Controle de pragas vista aérea drone">
+          <img src="assets/atlantic-solution-drone-termonebulizacao.webp" alt="Controle de pragas visto de cima via drone" loading="lazy" />
+        </button>
+        <figcaption class="carrossel-caption">Monitoramento aéreo por drone</figcaption>
+      </figure>
+
+      <figure class="carrossel-card carrossel-card--v">
         <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Rejunte e acabamento de piscina">
-          <img src="assets/atlantic-solution-reforma-piscina-rejunte.webp" alt="Rejunte e acabamento de piscina" loading="lazy" />
+          <img src="assets/atlantic-solution-reforma-piscina-rejunte.webp" alt="Rejunte técnico epóxi em piscina" loading="lazy" />
         </button>
-        <figcaption class="bento__caption">Rejunte e acabamento de piscina</figcaption>
+        <figcaption class="carrossel-caption">Rejunte epóxi de alta resistência</figcaption>
       </figure>
 
-      <figure class="bento__item bento__item--wide">
-        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Reunião técnica na sede em Magé">
-          <img src="assets/atlantic-solution-equipe-reuniao-escritorio-mage.webp" alt="Reunião técnica na sede em Magé" loading="lazy" />
+      <figure class="carrossel-card carrossel-card--h">
+        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Reunião técnica na sede Magé">
+          <img src="assets/atlantic-solution-equipe-reuniao-escritorio-mage.webp" alt="Reunião técnica de engenheiros na sede Magé" loading="lazy" />
         </button>
-        <figcaption class="bento__caption">Reunião técnica na sede em Magé</figcaption>
+        <figcaption class="carrossel-caption">Planejamento na sede em Magé</figcaption>
+      </figure>
+
+      <figure class="carrossel-card carrossel-card--v">
+        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Recuperação de mureta de piscina">
+          <img src="assets/atlantic-solution-recuperacao-mureta-piscina.webp" alt="Recuperação estrutural de mureta" loading="lazy" />
+        </button>
+        <figcaption class="carrossel-caption">Recuperação estrutural em deck</figcaption>
+      </figure>
+
+      <figure class="carrossel-card carrossel-card--v">
+        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Pintura técnica de escada de emergência">
+          <img src="assets/atlantic-solution-revitalizacao-escada-pintura.webp" alt="Pintura e sinalização de escada predial" loading="lazy" />
+        </button>
+        <figcaption class="carrossel-caption">Escada de emergência predial</figcaption>
+      </figure>
+
+      <figure class="carrossel-card carrossel-card--h">
+        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Reunião técnica com cliente">
+          <img src="assets/atlantic-solution-reuniao-tecnica-cliente-obra.webp" alt="Reunião técnica presencial com cliente" loading="lazy" />
+        </button>
+        <figcaption class="carrossel-caption">Alinhamento técnico presencial</figcaption>
+      </figure>
+
+      <!-- Duplicação para loop contínuo -->
+      <figure class="carrossel-card carrossel-card--v">
+        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Limpeza de piscina em condomínio">
+          <img src="assets/atlantic-solution-limpeza-piscina.webp" alt="Limpeza de piscina em condomínio" loading="lazy" />
+        </button>
+        <figcaption class="carrossel-caption">Manutenção periódica de piscina</figcaption>
+      </figure>
+
+      <figure class="carrossel-card carrossel-card--v">
+        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Manutenção de tubulação predial">
+          <img src="assets/atlantic-solution-manutencao-tubulacao.webp" alt="Manutenção de barriletes e tubulação" loading="lazy" />
+        </button>
+        <figcaption class="carrossel-caption">Manutenção de barriletes prediais</figcaption>
+      </figure>
+
+      <figure class="carrossel-card carrossel-card--h">
+        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Controle de pragas vista aérea drone">
+          <img src="assets/atlantic-solution-drone-termonebulizacao.webp" alt="Controle de pragas visto de cima via drone" loading="lazy" />
+        </button>
+        <figcaption class="carrossel-caption">Monitoramento aéreo por drone</figcaption>
+      </figure>
+
+      <figure class="carrossel-card carrossel-card--v">
+        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Rejunte e acabamento de piscina">
+          <img src="assets/atlantic-solution-reforma-piscina-rejunte.webp" alt="Rejunte técnico epóxi em piscina" loading="lazy" />
+        </button>
+        <figcaption class="carrossel-caption">Rejunte epóxi de alta resistência</figcaption>
+      </figure>
+
+      <figure class="carrossel-card carrossel-card--h">
+        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Reunião técnica na sede Magé">
+          <img src="assets/atlantic-solution-equipe-reuniao-escritorio-mage.webp" alt="Reunião técnica de engenheiros na sede Magé" loading="lazy" />
+        </button>
+        <figcaption class="carrossel-caption">Planejamento na sede em Magé</figcaption>
+      </figure>
+
+      <figure class="carrossel-card carrossel-card--v">
+        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Recuperação de mureta de piscina">
+          <img src="assets/atlantic-solution-recuperacao-mureta-piscina.webp" alt="Recuperação estrutural de mureta" loading="lazy" />
+        </button>
+        <figcaption class="carrossel-caption">Recuperação estrutural em deck</figcaption>
+      </figure>
+
+      <figure class="carrossel-card carrossel-card--v">
+        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Pintura técnica de escada de emergência">
+          <img src="assets/atlantic-solution-revitalizacao-escada-pintura.webp" alt="Pintura e sinalização de escada predial" loading="lazy" />
+        </button>
+        <figcaption class="carrossel-caption">Escada de emergência predial</figcaption>
+      </figure>
+
+      <figure class="carrossel-card carrossel-card--h">
+        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Reunião técnica com cliente">
+          <img src="assets/atlantic-solution-reuniao-tecnica-cliente-obra.webp" alt="Reunião técnica presencial com cliente" loading="lazy" />
+        </button>
+        <figcaption class="carrossel-caption">Alinhamento técnico presencial</figcaption>
       </figure>
     </div>
   </div>
