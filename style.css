@@ -1478,4 +1478,4 @@ p{margin:0}
 .pjt__badge{position:absolute;top:12px;left:12px;background:var(--accent);color:var(--graphite);font-family:var(--font-display);font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
 @media(max-width:640px){.pjt{flex-basis:255px}}
 
-.clientes__mais{margin:18px 4px 0;text-align:right;font-family:var(--font-display);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--tech)}
+.clientes__mais{margin:18px 4px 0;text-align:center;font-family:var(--font-display);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--tech)}
