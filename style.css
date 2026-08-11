@@ -1437,3 +1437,17 @@ p{margin:0}
 @media(max-width:520px){.georegioes__grid{grid-template-columns:1fr}}
 
 .blogsec__more{display:flex;justify-content:center;margin-top:44px}
+
+/* ============ CARROSSEL EMPRESA EM ATIVIDADE ============ */
+.atividade{padding:0 0 var(--sec);overflow:hidden}
+.atividade__head{margin-bottom:38px}
+.atividade__strip{display:flex;gap:20px;width:max-content;animation:atividadeScroll 55s linear infinite}
+.atividade__strip:hover{animation-play-state:paused}
+.atv{position:relative;width:320px;aspect-ratio:4/3;border-radius:16px;overflow:hidden;border:1px solid var(--line-dark);flex-shrink:0}
+.atv img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+.atv:hover img{transform:scale(1.05)}
+.atv figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 16px 12px;background:linear-gradient(to top,rgba(20,24,28,.92),transparent);font-family:var(--font-display);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--off)}
+.atv--v{aspect-ratio:3/4;width:250px}
+@keyframes atividadeScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.atividade__strip{animation:none;overflow-x:auto}}
+@media(max-width:640px){.atv{width:240px}.atv--v{width:190px}}
