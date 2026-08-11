@@ -166,7 +166,7 @@ p{margin:0}
 
 /* ---------- HERO ---------- */
 .hero{
-  position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden;
+  position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;
   background:var(--graphite);
 }
 .hero__bg{
@@ -186,8 +186,14 @@ p{margin:0}
 }
 .hero__scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,24,28,.97) 6%,rgba(20,24,28,.74) 45%,rgba(20,24,28,.22) 100%)}
 .hero__scrim--bottom{background:linear-gradient(0deg,var(--graphite) 2%,transparent 45%)}
-.hero__inner{position:relative;width:100%;max-width:var(--wrap);margin:0 auto;padding:118px var(--pad) 74px}
-.hero__grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.77fr);gap:56px;align-items:center}
+.hero__inner{position:relative;width:100%;max-width:var(--wrap);margin:0 auto;padding:105px var(--pad) 50px}
+.hero__grid{display:block}
+.hero__copy{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.77fr);gap:56px;align-items:center}
+.hero__copy > .eyebrow,
+.hero__copy > h1,
+.hero__copy > .hero__lead,
+.hero__copy > .hero__ctas {grid-column:1}
+.hero__copy > .hero__showcase {grid-column:2;grid-row:1 / span 4}
 .hero h1{font-weight:700;font-size:clamp(32px,4.4vw,58px);line-height:1.08;letter-spacing:-.02em;margin:0 0 24px;max-width:18ch}
 .hero .mark{color:var(--accent)}
 .hero__lead{max-width:52ch;color:var(--txt-dark);font-size:17px;line-height:1.65;margin:0 0 34px}
@@ -1031,9 +1037,14 @@ p{margin:0}
   .nav{background:rgba(20,24,28,.88)}
   .nav__toggle{display:flex}
   .nav__menu{display:none}
-  .hero__inner{padding-top:130px}
-  .hero__grid{grid-template-columns:1fr}
-  .hero__showcase{max-width:325px;margin:0 auto}
+  .hero__inner{padding-top:110px;padding-bottom:36px;min-height:auto}
+  .hero__grid{display:block}
+  .hero__copy{display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:0}
+  .hero .eyebrow{margin-bottom:5px !important;text-align:left}
+  .hero h1{font-size:clamp(28px,7.5vw,42px);margin-bottom:5px !important;text-align:left;max-width:none}
+  .hero__lead{font-size:14.5px;line-height:1.45;margin-bottom:10px !important;text-align:left;max-width:none;-webkit-line-clamp:none !important;display:block !important;overflow:visible !important}
+  .hero__showcase{max-width:325px;width:100%;margin:0 auto 16px;display:block}
+  .hero__ctas{width:100%;gap:10px}
   .contato__grid{grid-template-columns:1fr;gap:40px}
   .problema__grid{grid-template-columns:1fr;gap:32px}
   .problema__head{max-width:none}
@@ -1072,22 +1083,22 @@ p{margin:0}
 }
 @media (max-width:480px){
   :root{--pad:18px;--sec:64px}
-  .hero{min-height:100dvh;align-items:stretch}
+  .hero{min-height:auto;align-items:stretch}
   .hero__scrim{background:linear-gradient(180deg,rgba(20,24,28,.98) 0%,rgba(20,24,28,.94) 42%,rgba(20,24,28,.55) 72%,rgba(20,24,28,.28) 100%)}
   .hero__scrim--bottom{background:linear-gradient(0deg,var(--graphite) 0%,transparent 30%)}
-  .hero__inner{padding:110px var(--pad) 46px;min-height:100dvh;display:flex;flex-direction:column;justify-content:center}
-  .hero h1{font-size:clamp(30px,8.5vw,40px);max-width:none}
-  .hero__lead{font-size:15.5px;max-width:none}
-  .hero__showcase{display:none}
+  .hero__inner{padding:96px var(--pad) 32px;min-height:auto;display:block}
+  .hero h1{font-size:clamp(26px,7.5vw,34px);max-width:none;margin-bottom:5px !important}
+  .hero__lead{font-size:14px;line-height:1.42;max-width:none;margin-bottom:10px !important;-webkit-line-clamp:none !important;display:block !important;overflow:visible !important}
+  .hero__showcase{display:block;max-width:100%;margin:0 0 14px}
   .btn{width:100%;text-align:center}
   .drawer{width:100vw}
   .form{padding:24px}
   .creditos{flex-direction:column;align-items:flex-start;gap:1rem}
 }
 @media (max-width:480px) and (max-height:800px){
-  .hero__inner{padding-top:96px;padding-bottom:28px;gap:0}
-  .hero h1{font-size:clamp(30px,8.6vw,38px);margin-bottom:16px}
-  .hero__lead{font-size:14.5px;line-height:1.55;margin-bottom:22px;-webkit-line-clamp:3;display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden}
+  .hero__inner{padding-top:82px;padding-bottom:24px;gap:0}
+  .hero h1{font-size:clamp(24px,7vw,32px);margin-bottom:5px !important}
+  .hero__lead{font-size:13.5px;line-height:1.4;margin-bottom:8px !important;-webkit-line-clamp:none !important;display:block !important;overflow:visible !important}
   .hero__ctas{gap:10px}
   .btn{padding:14px 24px}
 }
