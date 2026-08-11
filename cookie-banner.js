@@ -12,7 +12,7 @@
        CONFIGURAÇÕES — Edite aqui para personalizar
        ============================================================ */
     var CONFIG = {
-        storageKey: 'atlantic_solucoes_cookie_consent', // Chave no localStorage
+        storageKey: 'site_cookie_consent',           // Chave no localStorage
         expiryDays: 365,                             // Dias até expirar o consentimento
         bannerDelay: 600,                            // ms antes de mostrar o banner
         showFloatingBtn: false,                      // Mostrar botão flutuante após fechar (Padrão AG5: link no rodapé)
@@ -104,7 +104,7 @@
         syncToggles();
         modal.classList.add('ck-modal--visible');
         modal.removeAttribute('aria-hidden');
-        document.body.classList.add('no-scroll');
+        document.body.style.overflow = 'hidden';
         setTimeout(function () {
             var closeBtn = document.getElementById('ck-modal-close');
             if (closeBtn) closeBtn.focus();
@@ -116,7 +116,7 @@
         if (!modal) return;
         modal.classList.remove('ck-modal--visible');
         modal.setAttribute('aria-hidden', 'true');
-        document.body.classList.remove('no-scroll');
+        document.body.style.overflow = '';
     }
 
     function syncToggles() {
@@ -164,6 +164,7 @@
     function acceptAll() {
         state = { necessary: true, functional: true, analytics: true, performance: true, advertising: true, decided: true };
         save(state);
+        syncToggles();
         dispatch(state);
         hideBanner();
         closeModal();
@@ -174,6 +175,7 @@
     function rejectAll() {
         state = { necessary: true, functional: false, analytics: false, performance: false, advertising: false, decided: true };
         save(state);
+        syncToggles();
         dispatch(state);
         hideBanner();
         closeModal();
@@ -185,6 +187,7 @@
         var custom = readToggles();
         state = Object.assign({}, custom, { decided: true });
         save(state);
+        syncToggles();
         dispatch(state);
         hideBanner();
         closeModal();
