@@ -313,10 +313,23 @@
 <section class="sobre" id="sobre">
   <div class="sobre__grid">
     <div class="sobre__sticky">
-      <img src="assets/atlantic-solution-fundador-empresa-mage-rj.webp" alt="Fundador da Atlântic Soluções Ambientais" loading="lazy" />
-      <div class="sobre__caption">
-        <p class="eyebrow eyebrow--accent">// FUNDAÇÃO 05/2020 //</p>
-        <p>Fundador da Atlântic Soluções Ambientais, na sede da empresa em Magé/RJ.</p>
+      <div class="sobre__mosaic">
+        <figure class="sm__main">
+          <img src="assets/atlantic-solution-fundador-empresa-mage-rj.webp" alt="Fundador da Atlântic Soluções Ambientais" loading="lazy" />
+          <div class="sobre__caption">
+            <p class="eyebrow eyebrow--accent">// FUNDAÇÃO 05/2020 //</p>
+            <p>Fundador da Atlântic Soluções Ambientais, na sede da empresa em Magé/RJ.</p>
+          </div>
+        </figure>
+        <figure class="sm__thumb">
+          <img src="assets/atlantic-solution-condominio-horizontal-aereo.webp" alt="Condomínio atendido pela Atlântic visto de cima" loading="lazy" />
+        </figure>
+        <figure class="sm__thumb">
+          <img src="assets/atlantic-solution-drone-limpeza-cisterna.webp" alt="Limpeza de cisterna registrada com drone" loading="lazy" />
+        </figure>
+        <figure class="sm__thumb">
+          <img src="assets/atlantic-solution-manutencao-piscina.webp" alt="Manutenção de piscina em condomínio" loading="lazy" />
+        </figure>
       </div>
     </div>
     <div class="sobre__texto">
@@ -324,6 +337,10 @@
       <h2 class="reveal">6 anos resolvendo o que a maioria dos fornecedores terceiriza.</h2>
       <figure class="sobre__img-mobile reveal">
         <img src="assets/atlantic-solution-fundador-empresa-mage-rj.webp" alt="Fundador da Atlântic Soluções Ambientais" loading="lazy" />
+        <div class="sobre__img-mobile-row">
+          <img src="assets/atlantic-solution-condominio-horizontal-aereo.webp" alt="Condomínio atendido pela Atlântic visto de cima" loading="lazy" />
+          <img src="assets/atlantic-solution-drone-limpeza-cisterna.webp" alt="Limpeza de cisterna registrada com drone" loading="lazy" />
+        </div>
         <figcaption>
           <span class="eyebrow eyebrow--accent">// FUNDAÇÃO 05/2020 //</span>
           Fundador da Atlântic Soluções Ambientais, na sede da empresa em Magé/RJ.
@@ -351,137 +368,84 @@
   </div>
 
   <div class="wrap">
-    <div class="galeria reveal">
-      <figure class="galeria__item galeria__item--hero">
-        <div class="galeria__video">
-          <video id="equipeVideo" muted loop playsinline preload="none"
-                 poster="assets/atlantic-solution-equipe-vertical-poster.webp"
-                 aria-label="Equipe Atlântic na cobertura de um condomínio atendido no Rio de Janeiro"></video>
-        </div>
-      </figure>
-
-      <figure class="galeria__item">
-        <button type="button" class="galeria__trigger" data-lightbox-open data-idx="0" aria-label="Ampliar foto: reunião técnica com cliente">
+    <div class="galeria-bento reveal">
+      <figure class="bento__item bento__item--wide">
+        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Reunião técnica com cliente antes da obra">
           <img src="assets/atlantic-solution-reuniao-tecnica-cliente-obra.webp" alt="Reunião técnica da Atlântic com cliente antes do início da obra" loading="lazy" />
         </button>
+        <figcaption class="bento__caption">Reunião técnica com cliente antes da obra</figcaption>
       </figure>
 
-      <figure class="galeria__item">
-        <button type="button" class="galeria__trigger" data-lightbox-open data-idx="1" aria-label="Ampliar foto: equipe na cobertura de condomínio">
-          <img src="assets/atlantic-solution-equipe-cobertura-horizontal.webp" alt="Equipe Atlântic reunida na cobertura de um condomínio atendido na Barra da Tijuca" loading="lazy" />
+      <figure class="bento__item">
+        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Impermeabilização de borda de piscina">
+          <img src="assets/atlantic-solution-impermeabilizacao-borda-piscina.webp" alt="Impermeabilização de borda de piscina" loading="lazy" />
         </button>
+        <figcaption class="bento__caption">Impermeabilização de borda de piscina</figcaption>
+      </figure>
+
+      <figure class="bento__item">
+        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Equipe Atlântic reunida na cobertura">
+          <img src="assets/atlantic-solution-equipe-cobertura-horizontal.webp" alt="Equipe Atlântic reunida na cobertura de um condomínio" loading="lazy" />
+        </button>
+        <figcaption class="bento__caption">Equipe Atlântic na cobertura de condomínio</figcaption>
+      </figure>
+
+      <figure class="bento__item">
+        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Vistoria elétrica em quadros de medição">
+          <img src="assets/atlantic-solution-vistoria-eletrica-quadros.webp" alt="Vistoria elétrica em quadros de medição" loading="lazy" />
+        </button>
+        <figcaption class="bento__caption">Vistoria elétrica em quadros de medição</figcaption>
+      </figure>
+
+      <figure class="bento__item bento__item--wide">
+        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Início de obra, material no canteiro">
+          <img src="assets/atlantic-solution-obra-material-inicio.webp" alt="Início de obra, material no canteiro" loading="lazy" />
+        </button>
+        <figcaption class="bento__caption">Início de obra, material no canteiro</figcaption>
+      </figure>
+
+      <figure class="bento__item">
+        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Termonebulização em área comum">
+          <img src="assets/atlantic-solution-termonebulizacao-condominio-2.webp" alt="Termonebulização em área comum" loading="lazy" />
+        </button>
+        <figcaption class="bento__caption">Termonebulização em área comum</figcaption>
+      </figure>
+
+      <figure class="bento__item">
+        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Tampas de reservatório recuperadas">
+          <img src="assets/atlantic-solution-tampas-reservatorio-impermeabilizadas.webp" alt="Tampas de reservatório recuperadas" loading="lazy" />
+        </button>
+        <figcaption class="bento__caption">Tampas de reservatório recuperadas</figcaption>
+      </figure>
+
+      <figure class="bento__item">
+        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Limpeza de piscina em condomínio">
+          <img src="assets/atlantic-solution-limpeza-piscina.webp" alt="Limpeza de piscina em condomínio" loading="lazy" />
+        </button>
+        <figcaption class="bento__caption">Limpeza de piscina em condomínio</figcaption>
+      </figure>
+
+      <figure class="bento__item">
+        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Manutenção de tubulação predial">
+          <img src="assets/atlantic-solution-manutencao-tubulacao.webp" alt="Manutenção de tubulação predial" loading="lazy" />
+        </button>
+        <figcaption class="bento__caption">Manutenção de tubulação predial</figcaption>
+      </figure>
+
+      <figure class="bento__item">
+        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Rejunte e acabamento de piscina">
+          <img src="assets/atlantic-solution-reforma-piscina-rejunte.webp" alt="Rejunte e acabamento de piscina" loading="lazy" />
+        </button>
+        <figcaption class="bento__caption">Rejunte e acabamento de piscina</figcaption>
+      </figure>
+
+      <figure class="bento__item bento__item--wide">
+        <button type="button" class="galeria__trigger" data-lightbox-open aria-label="Ampliar foto: Reunião técnica na sede em Magé">
+          <img src="assets/atlantic-solution-equipe-reuniao-escritorio-mage.webp" alt="Reunião técnica na sede em Magé" loading="lazy" />
+        </button>
+        <figcaption class="bento__caption">Reunião técnica na sede em Magé</figcaption>
       </figure>
     </div>
-  </div>
-</section>
-
-<section class="atividade" id="atividade">
-  <div class="wrap atividade__head">
-    <div class="sec-head">
-      <div>
-        <p class="eyebrow eyebrow--accent">// EMPRESA EM ATIVIDADE //</p>
-        <h2>Registro real de quem está em campo todo dia.</h2>
-      </div>
-      <p class="sec-head__aside">Fotos de operação da equipe Atlântic em condomínios e empresas atendidos.</p>
-    </div>
-  </div>
-  <div class="atividade__strip" aria-label="Fotos da equipe Atlântic em atividade">
-        <figure class="atv">
-          <img src="assets/atlantic-solution-equipe-cobertura-horizontal.webp" alt="Equipe Atlântic em condomínio na Barra, Atlântic Soluções Ambientais" loading="lazy" width="640" height="480" />
-          <figcaption>Equipe Atlântic em condomínio na Barra</figcaption>
-        </figure>
-        <figure class="atv atv--v">
-          <img src="assets/atlantic-solution-impermeabilizacao-borda-piscina.webp" alt="Impermeabilização de borda de piscina, Atlântic Soluções Ambientais" loading="lazy" width="640" height="480" />
-          <figcaption>Impermeabilização de borda de piscina</figcaption>
-        </figure>
-        <figure class="atv">
-          <img src="assets/atlantic-solution-vistoria-eletrica-quadros.webp" alt="Vistoria elétrica em quadros de medição, Atlântic Soluções Ambientais" loading="lazy" width="640" height="480" />
-          <figcaption>Vistoria elétrica em quadros de medição</figcaption>
-        </figure>
-        <figure class="atv atv--v">
-          <img src="assets/atlantic-solution-equipe-reforma-piscina.webp" alt="Reforma de piscina em condomínio, Atlântic Soluções Ambientais" loading="lazy" width="640" height="480" />
-          <figcaption>Reforma de piscina em condomínio</figcaption>
-        </figure>
-        <figure class="atv">
-          <img src="assets/atlantic-solution-obra-material-inicio.webp" alt="Início de obra, material no canteiro, Atlântic Soluções Ambientais" loading="lazy" width="640" height="480" />
-          <figcaption>Início de obra, material no canteiro</figcaption>
-        </figure>
-        <figure class="atv atv--v">
-          <img src="assets/atlantic-solution-termonebulizacao-condominio-2.webp" alt="Termonebulização em área comum, Atlântic Soluções Ambientais" loading="lazy" width="640" height="480" />
-          <figcaption>Termonebulização em área comum</figcaption>
-        </figure>
-        <figure class="atv atv--v">
-          <img src="assets/atlantic-solution-tampas-reservatorio-impermeabilizadas.webp" alt="Tampas de reservatório recuperadas, Atlântic Soluções Ambientais" loading="lazy" width="640" height="480" />
-          <figcaption>Tampas de reservatório recuperadas</figcaption>
-        </figure>
-        <figure class="atv atv--v">
-          <img src="assets/atlantic-solution-limpeza-piscina.webp" alt="Limpeza de piscina em condomínio, Atlântic Soluções Ambientais" loading="lazy" width="640" height="480" />
-          <figcaption>Limpeza de piscina em condomínio</figcaption>
-        </figure>
-        <figure class="atv atv--v">
-          <img src="assets/atlantic-solution-manutencao-tubulacao.webp" alt="Manutenção de tubulação predial, Atlântic Soluções Ambientais" loading="lazy" width="640" height="480" />
-          <figcaption>Manutenção de tubulação predial</figcaption>
-        </figure>
-        <figure class="atv atv--v">
-          <img src="assets/atlantic-solution-reforma-piscina-rejunte.webp" alt="Rejunte e acabamento de piscina, Atlântic Soluções Ambientais" loading="lazy" width="640" height="480" />
-          <figcaption>Rejunte e acabamento de piscina</figcaption>
-        </figure>
-        <figure class="atv">
-          <img src="assets/atlantic-solution-drone-termonebulizacao.webp" alt="Controle de pragas visto de cima, Atlântic Soluções Ambientais" loading="lazy" width="640" height="480" />
-          <figcaption>Controle de pragas visto de cima</figcaption>
-        </figure>
-        <figure class="atv">
-          <img src="assets/atlantic-solution-equipe-reuniao-escritorio-mage.webp" alt="Reunião técnica na sede em Magé, Atlântic Soluções Ambientais" loading="lazy" width="640" height="480" />
-          <figcaption>Reunião técnica na sede em Magé</figcaption>
-        </figure>
-        <figure class="atv">
-          <img src="assets/atlantic-solution-equipe-cobertura-horizontal.webp" alt="Equipe Atlântic em condomínio na Barra, Atlântic Soluções Ambientais" loading="lazy" width="640" height="480" />
-          <figcaption>Equipe Atlântic em condomínio na Barra</figcaption>
-        </figure>
-        <figure class="atv atv--v">
-          <img src="assets/atlantic-solution-impermeabilizacao-borda-piscina.webp" alt="Impermeabilização de borda de piscina, Atlântic Soluções Ambientais" loading="lazy" width="640" height="480" />
-          <figcaption>Impermeabilização de borda de piscina</figcaption>
-        </figure>
-        <figure class="atv">
-          <img src="assets/atlantic-solution-vistoria-eletrica-quadros.webp" alt="Vistoria elétrica em quadros de medição, Atlântic Soluções Ambientais" loading="lazy" width="640" height="480" />
-          <figcaption>Vistoria elétrica em quadros de medição</figcaption>
-        </figure>
-        <figure class="atv atv--v">
-          <img src="assets/atlantic-solution-equipe-reforma-piscina.webp" alt="Reforma de piscina em condomínio, Atlântic Soluções Ambientais" loading="lazy" width="640" height="480" />
-          <figcaption>Reforma de piscina em condomínio</figcaption>
-        </figure>
-        <figure class="atv">
-          <img src="assets/atlantic-solution-obra-material-inicio.webp" alt="Início de obra, material no canteiro, Atlântic Soluções Ambientais" loading="lazy" width="640" height="480" />
-          <figcaption>Início de obra, material no canteiro</figcaption>
-        </figure>
-        <figure class="atv atv--v">
-          <img src="assets/atlantic-solution-termonebulizacao-condominio-2.webp" alt="Termonebulização em área comum, Atlântic Soluções Ambientais" loading="lazy" width="640" height="480" />
-          <figcaption>Termonebulização em área comum</figcaption>
-        </figure>
-        <figure class="atv atv--v">
-          <img src="assets/atlantic-solution-tampas-reservatorio-impermeabilizadas.webp" alt="Tampas de reservatório recuperadas, Atlântic Soluções Ambientais" loading="lazy" width="640" height="480" />
-          <figcaption>Tampas de reservatório recuperadas</figcaption>
-        </figure>
-        <figure class="atv atv--v">
-          <img src="assets/atlantic-solution-limpeza-piscina.webp" alt="Limpeza de piscina em condomínio, Atlântic Soluções Ambientais" loading="lazy" width="640" height="480" />
-          <figcaption>Limpeza de piscina em condomínio</figcaption>
-        </figure>
-        <figure class="atv atv--v">
-          <img src="assets/atlantic-solution-manutencao-tubulacao.webp" alt="Manutenção de tubulação predial, Atlântic Soluções Ambientais" loading="lazy" width="640" height="480" />
-          <figcaption>Manutenção de tubulação predial</figcaption>
-        </figure>
-        <figure class="atv atv--v">
-          <img src="assets/atlantic-solution-reforma-piscina-rejunte.webp" alt="Rejunte e acabamento de piscina, Atlântic Soluções Ambientais" loading="lazy" width="640" height="480" />
-          <figcaption>Rejunte e acabamento de piscina</figcaption>
-        </figure>
-        <figure class="atv">
-          <img src="assets/atlantic-solution-drone-termonebulizacao.webp" alt="Controle de pragas visto de cima, Atlântic Soluções Ambientais" loading="lazy" width="640" height="480" />
-          <figcaption>Controle de pragas visto de cima</figcaption>
-        </figure>
-        <figure class="atv">
-          <img src="assets/atlantic-solution-equipe-reuniao-escritorio-mage.webp" alt="Reunião técnica na sede em Magé, Atlântic Soluções Ambientais" loading="lazy" width="640" height="480" />
-          <figcaption>Reunião técnica na sede em Magé</figcaption>
-        </figure>
   </div>
 </section>
 
