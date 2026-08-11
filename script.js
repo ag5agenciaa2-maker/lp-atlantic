@@ -99,13 +99,12 @@
     }
   }
 
-  /* ---------- Hero: vídeo lateral (showcase) — só carrega/toca em telas ≥1024px ---------- */
+  /* ---------- Hero: vídeo lateral (showcase) ---------- */
   const sideVideo = $('#heroSideVideo');
   if (sideVideo) {
-    const mqDesktop = window.matchMedia('(min-width: 1024px)');
-    const showSide = () => { if (sideVideo.readyState >= 2) sideVideo.classList.add('is-ready'); };
+    const showSide = () => { if (sideVideo.readyState >= 1) sideVideo.classList.add('is-ready'); };
     const loadSideVideo = () => {
-      if (!mqDesktop.matches || sideVideo.dataset.loaded) return;
+      if (sideVideo.dataset.loaded) return;
       sideVideo.dataset.loaded = 'true';
       sideVideo.preload = 'auto';
       sideVideo.load();
@@ -113,9 +112,9 @@
       sideVideo.addEventListener('canplay', showSide);
       const p = sideVideo.play();
       if (p && p.catch) p.catch(() => {});
+      showSide();
     };
     loadSideVideo();
-    mqDesktop.addEventListener('change', loadSideVideo);
 
     /* Botões de som e expandir do vídeo hero */
     const heroMute = $('#heroMute');
@@ -699,5 +698,31 @@
   $$('[data-depo-close]', modal).forEach((el) => el.addEventListener('click', close));
   document.addEventListener('keydown', (e) => {
     if (modal.classList.contains('is-open') && e.key === 'Escape') close();
+  });
+})();
+
+/* ---------- Filtros Interativos da Galeria de Operação em Campo ---------- */
+(() => {
+  'use strict';
+  const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
+  const opTabs = $$('.op-tab');
+  const opCards = $$('.op-card');
+  if (!opTabs.length || !opCards.length) return;
+
+  opTabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      opTabs.forEach((t) => t.classList.remove('is-active'));
+      tab.classList.add('is-active');
+      const filter = tab.dataset.filter;
+      opCards.forEach((card) => {
+        if (filter === 'all' || card.dataset.category === filter) {
+          card.style.display = 'block';
+          setTimeout(() => card.classList.remove('is-hidden'), 10);
+        } else {
+          card.classList.add('is-hidden');
+          setTimeout(() => { if (card.classList.contains('is-hidden')) card.style.display = 'none'; }, 280);
+        }
+      });
+    });
   });
 })();
