@@ -1654,7 +1654,7 @@ p{margin:0}
 }
 
 /* ============ PROJETOS EM ANDAMENTO ============ */
-.projetos{padding:0 0 var(--sec)}
+.projetos{padding:var(--sec) 0}
 .projetos__case{margin-top:12px;font-family:var(--font-display);font-size:.95rem;color:var(--accent);letter-spacing:.04em}
 .projetos__track{display:flex;gap:18px;margin-top:38px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:16px;scrollbar-width:thin;scrollbar-color:rgba(126,217,86,.4) transparent}
 .pjt{position:relative;flex:0 0 300px;scroll-snap-align:start;background:rgba(247,247,247,.04);border:1px solid var(--line-dark);border-radius:16px;overflow:hidden}
