@@ -6,6 +6,30 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://atlanticsolucoes.com.br/manutencao-predial-rio-de-janeiro</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://atlanticsolucoes.com.br/manutencao-predial-barra-da-tijuca</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://atlanticsolucoes.com.br/manutencao-predial-recreio</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://atlanticsolucoes.com.br/manutencao-predial-copacabana</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://atlanticsolucoes.com.br/blog/</loc>
     <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
